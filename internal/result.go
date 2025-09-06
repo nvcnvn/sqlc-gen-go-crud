@@ -6,11 +6,11 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/sqlc-dev/sqlc-gen-go/internal/opts"
-	"github.com/sqlc-dev/plugin-sdk-go/sdk"
-	"github.com/sqlc-dev/sqlc-gen-go/internal/inflection"
+	"github.com/nvcnvn/sqlc-gen-go-curd/internal/inflection"
+	"github.com/nvcnvn/sqlc-gen-go-curd/internal/opts"
 	"github.com/sqlc-dev/plugin-sdk-go/metadata"
 	"github.com/sqlc-dev/plugin-sdk-go/plugin"
+	"github.com/sqlc-dev/plugin-sdk-go/sdk"
 )
 
 func buildEnums(req *plugin.GenerateRequest, options *opts.Options) []Enum {
@@ -96,6 +96,7 @@ func buildStructs(req *plugin.GenerateRequest, options *opts.Options) []Struct {
 				addExtraGoStructTags(tags, req, options, column)
 				s.Fields = append(s.Fields, Field{
 					Name:    StructName(column.Name, options),
+					DBName:  column.Name,
 					Type:    goType(req, options, column),
 					Tags:    tags,
 					Comment: column.Comment,

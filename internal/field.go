@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/sqlc-dev/sqlc-gen-go/internal/opts"
+	"github.com/nvcnvn/sqlc-gen-go-curd/internal/opts"
 	"github.com/sqlc-dev/plugin-sdk-go/plugin"
 )
 

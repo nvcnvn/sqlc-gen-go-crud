@@ -1,4 +1,4 @@
-module github.com/sqlc-dev/sqlc-gen-go
+module github.com/nvcnvn/sqlc-gen-go-curd
 
 go 1.21.3
 

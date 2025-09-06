@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/sqlc-dev/plugin-sdk-go/codegen"
 
-	golang "github.com/sqlc-dev/sqlc-gen-go/internal"
+	golang "github.com/nvcnvn/sqlc-gen-go-curd/internal"
 )
 
 func main() {

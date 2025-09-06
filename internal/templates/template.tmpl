@@ -159,6 +159,31 @@ type {{.Name}} struct { {{- range .Fields}}
   {{.Name}} {{.Type}} {{if .Tag}}{{$.Q}}{{.Tag}}{{$.Q}}{{end}}
   {{- end}}
 }
+
+func (s *{{.Name}}) TableName() string {
+	return "{{.Table.Schema}}.{{.Table.Name}}"
+}
+
+func (s *{{.Name}}) Fields() ([]string, []any) {
+	return []string{
+		{{- range .Fields}}
+		"{{.DBName}}",
+		{{- end}}
+	}, []any{
+		{{- range .Fields}}
+		&s.{{.Name}},
+		{{- end}}
+	}
+}
+
+func (s *{{.Name}}) FieldsMap() map[string]any {
+	return map[string]any{
+		{{- range .Fields}}
+		"{{.DBName}}": &s.{{.Name}},
+		{{- end}}
+	}
+}
+
 {{end}}
 {{end}}
 
